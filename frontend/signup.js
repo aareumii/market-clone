@@ -10,7 +10,7 @@ const checkPassword = () => {
 	} else return false;
 };
 
-const handleSubmit = async (event) => {
+const handleSubmitForm = async (event) => {
 	event.preventDefault();
 	const formData = new FormData(form);
 	const sha256Password = sha256(formData.get('password'));
@@ -24,7 +24,6 @@ const handleSubmit = async (event) => {
 			body: formData,
 		});
 		const data = await res.json();
-
 		if (data === '200') {
 			alert('회원 가입에 성공했습니다.');
 			window.location.pathname = '/login.html';
@@ -35,4 +34,4 @@ const handleSubmit = async (event) => {
 	}
 };
 
-form.addEventListener('submit', handleSubmit);
+form.addEventListener('submit', handleSubmitForm);
